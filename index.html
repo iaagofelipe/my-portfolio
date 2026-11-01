@@ -1,357 +1,449 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta
-    name="description"
-    content="Portfólio de Iago Silva — Desenvolvedor Full Stack com foco em Java, microsserviços, AWS, integrações e sistemas escaláveis."
-  />
-  <title>Iago Silva | Java • Microsserviços • AWS</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet"
-  />
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-  />
-  <link rel="stylesheet" href="style.css" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>Iago Silva — Backend Java, AWS e microsserviços</title>
+<meta name="description" content="Desenvolvedor sênior de backend em Java: microsserviços, mensageria e AWS. Quatro projetos com as decisões, os testes e os limites de cada um." />
+<link rel="canonical" href="https://iaagofelipe.github.io/my-portfolio/" />
+<meta name="author" content="Iago Silva" />
+<meta name="theme-color" content="#0a0a0b" />
+
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="pt_BR" />
+<meta property="og:site_name" content="Iago Silva" />
+<meta property="og:url" content="https://iaagofelipe.github.io/my-portfolio/" />
+<meta property="og:title" content="Iago Silva — Backend Java para o caminho crítico" />
+<meta property="og:description" content="Seis anos em Java, microsserviços e AWS. Quatro projetos com as decisões, os testes e os limites de cada um." />
+<meta property="og:image" content="https://iaagofelipe.github.io/my-portfolio/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Iago Silva — backend Java, AWS e microsserviços" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Iago Silva — Backend Java para o caminho crítico" />
+<meta name="twitter:description" content="Seis anos em Java, microsserviços e AWS. Quatro projetos com as decisões, os testes e os limites de cada um." />
+<meta name="twitter:image" content="https://iaagofelipe.github.io/my-portfolio/og-image.png" />
+
+<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+<link rel="preload" href="assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="assets/fonts/spline-sans-mono-var.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="stylesheet" href="assets/css/site.css" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Iago Silva",
+  "jobTitle": "Desenvolvedor Sênior de Backend",
+  "description": "Desenvolvedor de software sênior com atuação em backend Java, microsserviços, mensageria e AWS.",
+  "email": "mailto:iaagofelipe@gmail.com",
+  "url": "https://iaagofelipe.github.io/my-portfolio/",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Fortaleza",
+    "addressRegion": "CE",
+    "addressCountry": "BR"
+  },
+  "sameAs": [
+    "https://www.linkedin.com/in/iaagosilva",
+    "https://github.com/iaagofelipe"
+  ],
+  "knowsAbout": [
+    "Java",
+    "Spring Boot",
+    "Quarkus",
+    "Amazon Web Services",
+    "Microsserviços",
+    "Arquitetura orientada a eventos",
+    "PostgreSQL",
+    "React"
+  ],
+  "knowsLanguage": ["pt-BR", "en", "es"]
+}
+</script>
 </head>
 <body>
-  <div class="bg-orb orb-1"></div>
-  <div class="bg-orb orb-2"></div>
-  <div class="bg-grid"></div>
 
-  <header class="site-header" id="topo">
-    <div class="container nav-wrap">
-      <a href="#topo" class="brand" aria-label="Página inicial de Iago Silva">
-        <span class="brand-mark">IS</span>
-        <span class="brand-text">Iago Silva</span>
-      </a>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
 
-      <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
+<header class="sitehead">
+  <div class="wrap">
+    <a class="brand" href="./" aria-label="Iago Silva — início">
+      <span class="brand-name">Iago Silva</span>
+      <span class="brand-role">Backend · AWS</span>
+    </a>
+    <nav class="nav" aria-label="Seções da página">
+      <a href="#projetos">Projetos</a>
+      <a href="#decisoes">Decisões</a>
+      <a href="#trajetoria">Trajetória</a>
+      <a href="#contato">Contato</a>
+      <a class="nav-cv" href="curriculo.pdf">CV</a>
+    </nav>
+  </div>
+</header>
 
-      <nav class="site-nav">
-        <a href="#sobre">Sobre</a>
-        <a href="#experiencia">Experiência</a>
-        <a href="#habilidades">Habilidades</a>
-        <a href="#certificacoes">Certificações</a>
-        <a href="#contato">Contato</a>
-      </nav>
+<main id="conteudo">
+
+  <section class="hero wrap" aria-labelledby="tese">
+    <div>
+      <h1 id="tese">Backend Java para o caminho crítico.</h1>
+      <p class="hero-lede">
+        Seis anos construindo e integrando sistemas em Java. Hoje na <strong>3corações</strong>,
+        na evolução de uma plataforma B2B com microsserviços, Lambda, SQS e SES. Antes disso,
+        análise de vulnerabilidades na Network Secure e módulos financeiros usados por bancos
+        da América Latina.
+      </p>
+      <div class="ctas">
+        <a class="btn btn--primary" href="#projetos">Ver os quatro projetos</a>
+        <a class="btn btn--ghost" href="curriculo.pdf" type="application/pdf">Currículo em PDF</a>
+      </div>
+      <p class="status">
+        <span class="dot" aria-hidden="true"></span>
+        <span>Disponível para posições de backend sênior<br /><span class="status-loc">Fortaleza, BR · UTC−3</span></span>
+      </p>
     </div>
-  </header>
 
-  <main>
-    <section class="hero section-pad">
-      <div class="container hero-grid reveal">
-        <div class="hero-copy">
-          <span class="eyebrow">Portfólio profissional</span>
-          <h1>
-            Desenvolvedor <span>Full Stack</span> com foco em
-            <strong>Java, microsserviços, AWS e integrações escaláveis</strong>
-          </h1>
-          <p class="hero-text">
-            Construo aplicações confiáveis, APIs robustas e sistemas distribuídos com foco em
-            performance, manutenção e crescimento sustentável do produto.
-          </p>
+    <figure class="planta">
+      <figcaption><span class="fig-index">Planta 01</span><span>Slinks · analytics honesto</span></figcaption>
+      <svg viewBox="0 0 400 512" role="img" aria-labelledby="planta-t planta-d">
+        <title id="planta-t">Fluxo do Slinks</title>
+        <desc id="planta-d">O visitante clica no link curto, a API Java responde 302 com Cache-Control no-store sem esperar a gravação do clique, que vai para o Postgres 17 de forma best-effort. A SPA em React fala com um BFF em Fastify, que autentica por token de serviço e repassa para a API. Notas: o redirect responde antes de gravar o clique; o contrato OpenAPI é exportado e a CI falha se divergir; não há IP bruto persistido, só um HMAC com salt diário descartado em cinco dias.</desc>
+        <defs>
+          <marker id="ah" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="6" markerHeight="6" orient="auto">
+            <path class="mark" d="M0,0 L8,4 L0,8 z" />
+          </marker>
+          <marker id="ahc" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="6" markerHeight="6" orient="auto">
+            <path class="mark mark--crit" d="M0,0 L8,4 L0,8 z" />
+          </marker>
+        </defs>
 
-          <div class="hero-badges">
-            <span>Java</span>
-            <span>Spring Boot</span>
-            <span>Quarkus</span>
-            <span>AWS</span>
-            <span>Node.js</span>
-            <span>Angular</span>
-          </div>
+        <rect class="node-box" x="60" y="14" width="280" height="42" rx="3" />
+        <text class="node-t" x="72" y="32">VISITANTE</text>
+        <text class="node-s" x="72" y="45">clique no link curto</text>
 
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#contato">Entrar em contato</a>
-            <a class="btn btn-secondary" href="./Profile.pdf" target="_blank" rel="noopener noreferrer">
-              Ver currículo
-            </a>
-          </div>
-        </div>
+        <path class="edge" d="M200 56 L200 82" marker-end="url(#ah)" />
+        <text class="edge-label" x="208" y="74">GET /:slug</text>
 
-        <aside class="hero-card glass reveal-delay">
-          <div class="status-pill">
-            <span class="status-dot"></span>
-            Disponível para oportunidades estratégicas
-          </div>
+        <rect class="node-box" x="60" y="86" width="280" height="62" rx="3" />
+        <text class="node-t" x="72" y="106">API</text>
+        <text class="node-s" x="72" y="119">Java 21 · Spring Boot</text>
+        <text class="node-s" x="72" y="131">JdbcClient · Flyway · GeoIP2</text>
 
-          <div class="hero-card-content">
-            <div>
-              <p class="meta-label">Nome</p>
-              <h2>Iago Silva</h2>
-            </div>
-            <div>
-              <p class="meta-label">Base</p>
-              <p>Fortaleza, Ceará, Brasil</p>
-            </div>
-            <div>
-              <p class="meta-label">Especialidade</p>
-              <p>Backend, cloud e arquitetura distribuída</p>
-            </div>
-            <div>
-              <p class="meta-label">Idiomas</p>
-              <p>Português, Inglês e Espanhol básico</p>
-            </div>
-          </div>
-        </aside>
-      </div>
-    </section>
+        <path class="edge edge--crit" pathLength="1" d="M128 148 L112 186" marker-end="url(#ahc)" />
+        <path class="edge" d="M272 148 L288 186" marker-end="url(#ah)" />
 
-    <section class="section-pad" id="sobre">
-      <div class="container section-grid reveal">
-        <div>
-          <span class="section-tag">Sobre</span>
-          <h2 class="section-title">Perfil profissional</h2>
-        </div>
+        <rect class="node-box node-box--crit" x="60" y="190" width="134" height="54" rx="3" />
+        <text class="node-t node-t--crit" x="72" y="209">DESTINO</text>
+        <text class="node-s node-s--crit" x="72" y="222">302 · no-store</text>
+        <text class="node-s node-s--crit" x="72" y="233">nunca 301</text>
 
-        <div class="about-card glass">
-          <p>
-            Desenvolvedor de software com forte atuação em backend, arquitetura de microsserviços,
-            integrações e aplicações em nuvem. Experiência com desenvolvimento de soluções escaláveis,
-            APIs REST, mensageria, processamento assíncrono e sistemas de alta disponibilidade.
-          </p>
-          <p>
-            Atuação prática com Java, Spring Boot, Quarkus, Node.js, Angular, PostgreSQL, Oracle e
-            serviços AWS como Lambda, SQS, S3 e SES. Participo de decisões técnicas e arquiteturais,
-            sempre com foco em clean code, SOLID, performance e manutenibilidade.
-          </p>
-        </div>
-      </div>
-    </section>
+        <rect class="node-box" x="206" y="190" width="134" height="54" rx="3" />
+        <text class="node-t" x="218" y="209">POSTGRES 17</text>
+        <text class="node-s" x="218" y="222">click_event</text>
+        <text class="node-s" x="218" y="233">gravação best-effort</text>
 
-    <section class="section-pad" id="experiencia">
-      <div class="container reveal">
-        <span class="section-tag">Experiência</span>
-        <h2 class="section-title">Trajetória profissional</h2>
+        <rect class="node-box" x="60" y="282" width="134" height="46" rx="3" />
+        <text class="node-t" x="72" y="301">SPA</text>
+        <text class="node-s" x="72" y="314">React 19 · Vite</text>
 
-        <div class="timeline">
-          <article class="timeline-item glass">
-            <div class="timeline-top">
-              <div>
-                <h3>Analista de Desenvolvimento de Sistemas Sênior</h3>
-                <p class="company">Grupo 3corações</p>
-              </div>
-              <span class="period">ago 2025 — atual</span>
-            </div>
-            <p>
-              Atuação na evolução da plataforma B2B com Java, microsserviços e integrações distribuídas,
-              apoiando soluções escaláveis, resilientes e orientadas a eventos.
-            </p>
-            <div class="chip-list">
-              <span>Java</span>
-              <span>AWS</span>
-              <span>Lambda</span>
-              <span>SQS</span>
-              <span>S3</span>
-              <span>SES</span>
-              <span>Arquitetura distribuída</span>
-            </div>
-          </article>
+        <path class="edge" d="M127 328 L127 344" marker-end="url(#ah)" />
+        <text class="edge-label" x="137" y="341">/api</text>
 
-          <article class="timeline-item glass">
-            <div class="timeline-top">
-              <div>
-                <h3>Full Stack Developer</h3>
-                <p class="company">Network Secure</p>
-              </div>
-              <span class="period">mar 2023 — ago 2025</span>
-            </div>
-            <p>
-              Evolução de plataforma SaaS voltada à análise de vulnerabilidades, incluindo dashboards,
-              correções, integrações externas e desenvolvimento de microserviços com foco em usabilidade,
-              escalabilidade e organização do código.
-            </p>
-            <div class="chip-list">
-              <span>Quarkus</span>
-              <span>Angular</span>
-              <span>PostgreSQL</span>
-              <span>AWS</span>
-              <span>Integrações</span>
-            </div>
-          </article>
+        <rect class="node-box" x="60" y="348" width="134" height="46" rx="3" />
+        <text class="node-t" x="72" y="367">BFF</text>
+        <text class="node-s" x="72" y="380">Fastify 5 · CSRF</text>
 
-          <article class="timeline-item glass">
-            <div class="timeline-top">
-              <div>
-                <h3>Junior Software Engineer</h3>
-                <p class="company">VMetrix</p>
-              </div>
-              <span class="period">jul 2022 — mar 2023</span>
-            </div>
-            <p>
-              Desenvolvimento de módulos financeiros integrados a uma plataforma SaaS utilizada por
-              grandes bancos da América Latina.
-            </p>
-            <div class="chip-list">
-              <span>Spring Boot</span>
-              <span>REST APIs</span>
-              <span>Oracle</span>
-              <span>Java</span>
-            </div>
-          </article>
+        <path class="edge" d="M60 371 L40 371 L40 112 L56 112" marker-end="url(#ah)" />
+        <text class="edge-label" x="33" y="250" transform="rotate(-90 33 250)">X-Service-Token</text>
 
-          <article class="timeline-item glass">
-            <div class="timeline-top">
-              <div>
-                <h3>Software Analyst</h3>
-                <p class="company">Profectum</p>
-              </div>
-              <span class="period">abr 2022 — jul 2022</span>
-            </div>
-            <p>
-              Desenvolvimento de software, levantamento de requisitos e suporte a integrações, com
-              atuação em projeto do setor de saúde e integração com Salesforce.
-            </p>
-            <div class="chip-list">
-              <span>Java</span>
-              <span>Spring Boot</span>
-              <span>Oracle</span>
-              <span>Salesforce</span>
-            </div>
-          </article>
+        <line class="note-rule" x1="20" y1="424" x2="380" y2="424" />
+        <text class="note-h" x="20" y="438">NOTAS</text>
+        <text class="note-t" x="20" y="456">— o redirect responde antes de gravar o clique;</text>
+        <text class="note-t" x="20" y="473">— contrato OpenAPI exportado, CI falha se divergir;</text>
+        <text class="note-t" x="20" y="490">— sem IP bruto: HMAC com salt diário, 5 dias.</text>
+      </svg>
+    </figure>
+  </section>
 
-          <article class="timeline-item glass">
-            <div class="timeline-top">
-              <div>
-                <h3>Software Programmer</h3>
-                <p class="company">Mobit Brasil</p>
-              </div>
-              <span class="period">out 2020 — abr 2022</span>
-            </div>
-            <p>
-              Implementação e manutenção de software, passando por projetos com Java, Spring, Angular,
-              TypeScript, Kafka, Java EE e sistemas embarcados.
-            </p>
-            <div class="chip-list">
-              <span>Java EE</span>
-              <span>Spring</span>
-              <span>Angular</span>
-              <span>TypeScript</span>
-              <span>Kafka</span>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
+  <section class="section" id="projetos" aria-labelledby="projetos-h">
+    <div class="wrap">
+      <h2 id="projetos-h">Quatro projetos, quatro problemas que eu resolvi.</h2>
 
-    <section class="section-pad" id="habilidades">
-      <div class="container reveal">
-        <span class="section-tag">Stack</span>
-        <h2 class="section-title">Habilidades técnicas</h2>
+      <div class="sheets">
 
-        <div class="skills-layout">
-          <article class="skill-card glass">
-            <h3>Backend & APIs</h3>
-            <ul>
-              <li>Java</li>
-              <li>Spring Boot</li>
-              <li>Quarkus</li>
-              <li>Node.js</li>
-              <li>REST APIs</li>
-              <li>Microsserviços</li>
-            </ul>
-          </article>
-
-          <article class="skill-card glass">
-            <h3>Cloud & arquitetura</h3>
-            <ul>
-              <li>AWS Lambda</li>
-              <li>AWS SQS</li>
-              <li>AWS S3</li>
-              <li>AWS SES</li>
-              <li>Mensageria</li>
-              <li>Arquitetura orientada a eventos</li>
-            </ul>
-          </article>
-
-          <article class="skill-card glass">
-            <h3>Frontend & dados</h3>
-            <ul>
-              <li>Angular</li>
-              <li>TypeScript</li>
-              <li>React.js</li>
-              <li>PostgreSQL</li>
-              <li>Oracle Database</li>
-              <li>Integração de sistemas</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section-pad" id="certificacoes">
-      <div class="container reveal">
-        <span class="section-tag">Evolução contínua</span>
-        <h2 class="section-title">Certificações e formação</h2>
-
-        <div class="info-grid">
-          <article class="info-card glass">
-            <h3>Certificações</h3>
-            <ul class="clean-list">
-              <li>Microservices Java with Spring Boot and Spring Cloud</li>
-              <li>Angular 9 - Essencial</li>
-              <li>Angular 9 with Spring Boot</li>
-              <li>Flutter: introdução ao desenvolvimento de aplicativos móveis</li>
-              <li>Introdução ao aprendizado de máquina</li>
-            </ul>
-          </article>
-
-          <article class="info-card glass">
-            <h3>Formação</h3>
-            <ul class="clean-list">
-              <li>Pós-graduação em Engenharia de Software — Uniamérica</li>
-              <li>Análise e Desenvolvimento de Sistemas — Uniamérica</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section-pad" id="contato">
-      <div class="container reveal">
-        <div class="contact-box glass">
+        <article class="sheet">
           <div>
-            <span class="section-tag">Contato</span>
-            <h2 class="section-title">Vamos conversar</h2>
-            <p class="contact-text">
-              Aberto a oportunidades em backend, arquitetura, cloud, integrações e evolução de produtos.
-            </p>
+            <h3>Slinks <span class="tag">em destaque</span></h3>
+            <p class="sheet-lede">Encurtador de links com analytics que declara o quanto é estimativa.</p>
+            <div class="decision">
+              <p><strong>O redirect nunca depende do analytics.</strong> Se a gravação do clique
+              falhar, o visitante recebe o 302 de qualquer jeito — a perda é registrada, não vira
+              erro para quem clicou.</p>
+            </div>
+            <div class="sheet-figs">
+              <figure>
+                <img src="assets/img/meus-links.png" alt="Tela Meus links do Slinks: campo para colar a URL, resultado do link curto com botões de copiar, abrir e desativar." width="1440" height="1274" loading="lazy" decoding="async" />
+                <figcaption>Meus links · ambiente local, dados de demonstração</figcaption>
+              </figure>
+              <figure>
+                <img src="assets/img/administracao.png" alt="Tela de administração do Slinks: lista de todos os links da instância, quantos estão ativos e o controle de desativação." width="1440" height="1126" loading="lazy" decoding="async" />
+                <figcaption>Administração · visão da instância</figcaption>
+              </figure>
+            </div>
+            <div class="links">
+              <a href="projetos/slinks/">Ver o case study</a>
+              <a href="https://github.com/iaagofelipe/slinks" rel="noopener">Código no GitHub</a>
+            </div>
           </div>
+          <dl class="data">
+            <div><dt>testes</dt><dd>209</dd></div>
+            <div><dt>API · BFF · SPA</dt><dd>133 · 46 · 30</dd></div>
+            <div><dt>ci</dt><dd>diff de contrato</dd></div>
+            <div><dt>banco</dt><dd>Testcontainers</dd></div>
+            <div><dt>redirect</dt><dd>302 · no-store</dd></div>
+          </dl>
+        </article>
 
-          <div class="contact-actions">
-            <a class="contact-link" href="mailto:iaagofelipe@gmail.com">
-              <i class="fa-solid fa-envelope"></i>
-              <span>iaagofelipe@gmail.com</span>
-            </a>
-            <a class="contact-link" href="https://www.linkedin.com/in/iaagosilva" target="_blank" rel="noopener noreferrer">
-              <i class="fa-brands fa-linkedin"></i>
-              <span>linkedin.com/in/iaagosilva</span>
-            </a>
-            <a class="contact-link" href="https://github.com/iaagosilva" target="_blank" rel="noopener noreferrer">
-              <i class="fa-brands fa-github"></i>
-              <span>github.com/iaagosilva</span>
-            </a>
+        <article class="sheet">
+          <div>
+            <h3>Card Expense Tracker</h3>
+            <p class="sheet-lede">Previsão de fatura de cartão de crédito para duas pessoas, pela regra real de fechamento de cada banco.</p>
+            <div class="decision">
+              <p><strong>Parcela não é divisão.</strong> A primeira cai no mês do vencimento conforme
+              o dia de fechamento do cartão, e a última parcela absorve o resíduo em centavos para a
+              soma fechar exata.</p>
+            </div>
+            <div class="links">
+              <a href="https://app.cxtrker.lat" rel="noopener">App em produção</a>
+              <span class="private">código privado</span>
+            </div>
           </div>
+          <dl class="data">
+            <div><dt>arquivos</dt><dd>343</dd></div>
+            <div><dt>arquivos de teste</dt><dd>37</dd></div>
+            <div><dt>workflows</dt><dd>2</dd></div>
+            <div><dt>web</dt><dd>React 19 · Vite</dd></div>
+            <div><dt>api</dt><dd>Express 5 · Prisma</dd></div>
+          </dl>
+          <figure class="sheet-figure">
+            <img src="assets/img/card-expense-dashboard.png" alt="Visão geral do Card Expense Tracker: total do período, previsão do mês seguinte e do mês atual, com a quebra entre cartões, contas e avulsas." width="1118" height="238" loading="lazy" decoding="async" />
+            <figcaption>Visão geral · ambiente local, dados de demonstração</figcaption>
+          </figure>
+        </article>
+
+        <article class="sheet">
+          <div>
+            <h3>E-commerce Platform</h3>
+            <p class="sheet-lede">Checkout assíncrono com SQS FIFO e transactional outbox, entre um front Next.js e um backend Spring Boot.</p>
+            <div class="decision">
+              <p><strong>O evento só nasce se a transação commitar.</strong> O outbox grava no mesmo
+              commit do pedido, o consumo é separado do request, e o que falha vai para a DLQ em vez
+              de sumir.</p>
+            </div>
+            <div class="links">
+              <a href="https://github.com/iaagofelipe/ecommerce-platform-react" rel="noopener">Código no GitHub</a>
+            </div>
+          </div>
+          <dl class="data">
+            <div><dt>front</dt><dd>Next 14 · App Router</dd></div>
+            <div><dt>back</dt><dd>Spring Boot 3</dd></div>
+            <div><dt>fila</dt><dd>SQS FIFO · outbox</dd></div>
+            <div><dt>testes</dt><dd>Jest · Testing Library</dd></div>
+          </dl>
+        </article>
+
+        <article class="sheet">
+          <div>
+            <h3>PDF Editor</h3>
+            <p class="sheet-lede">Editor de PDF de mesa em que cada palavra, imagem e linha é um objeto selecionável.</p>
+            <div class="decision">
+              <p><strong>Eu trabalho no objeto do PDF, não no pixel.</strong> Mover uma palavra
+              preserva fonte, tamanho e cor, e o arquivo continua sendo um PDF de verdade — não uma
+              imagem com texto desenhado por cima.</p>
+            </div>
+            <div class="links">
+              <span class="private">código privado</span>
+            </div>
+          </div>
+          <dl class="data">
+            <div><dt>linguagem</dt><dd>Python 3.13</dd></div>
+            <div><dt>pdf</dt><dd>PyMuPDF 1.28</dd></div>
+            <div><dt>interface</dt><dd>Tkinter</dd></div>
+            <div><dt>arquivos</dt><dd>9 módulos</dd></div>
+          </dl>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="decisoes" aria-labelledby="decisoes-h">
+    <div class="wrap">
+      <h2 id="decisoes-h">O que eu decido antes de escrever código.</h2>
+      <ul class="principles">
+        <li class="principle">
+          <h3>Contrato antes da tela</h3>
+          <p>No Slinks, o OpenAPI é gerado no build da API, versionado no repositório, e vira
+          cliente tipado e schema Zod no BFF. A SPA não inventa tipo nenhum. A CI falha se o
+          artefato gerado divergir do contrato.</p>
+        </li>
+        <li class="principle">
+          <h3>O caminho crítico não espera o supérfluo</h3>
+          <p>Redirect é <code>302</code> com <code>Cache-Control: no-store</code>; gravação do
+          clique, log e evento são best-effort e não bloqueiam a resposta. Se o banco inteiro cai,
+          o link responde <code>503</code> em vez de fingir que funcionou.</p>
+        </li>
+        <li class="principle">
+          <h3>Se a métrica é aproximada, ela é dita aproximada</h3>
+          <p>“Visitantes” são únicos por dia, não do período — e o painel não afirma saber quantas
+          pessoas diferentes passaram no mês. Geolocalização é estimativa por IP, com crédito à
+          base. Bots aparecem e são excluídos por padrão.</p>
+        </li>
+        <li class="principle">
+          <h3>Privacidade no desenho, não no rodapé</h3>
+          <p>Nenhum IP ou User-Agent bruto é persistido. O visitante é identificado por um HMAC com
+          salt diário, e o salt é descartado depois de cinco dias. A geolocalização é derivada no
+          momento do clique, não guardada como endereço.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="trajetoria" aria-labelledby="trajetoria-h">
+    <div class="wrap">
+      <h2 id="trajetoria-h">Seis anos, cinco empresas.</h2>
+      <ol class="facts">
+        <li class="fact">
+          <p class="fact-period">ago 2025 — atual</p>
+          <h3 class="fact-role">Analista de Desenvolvimento de Sistemas Sênior <span class="fact-co">· 3corações</span></h3>
+          <p class="fact-what">Plataforma B2B em Java com microsserviços, Lambda, SQS e SES.
+          Integrações distribuídas e participação nas decisões técnicas e arquiteturais do time.</p>
+        </li>
+        <li class="fact">
+          <p class="fact-period">mar 2023 — ago 2025</p>
+          <h3 class="fact-role">Full Stack Developer <span class="fact-co">· Network Secure</span></h3>
+          <p class="fact-what">Sistema de análise de vulnerabilidades: dashboards, integrações com
+          APIs externas e novos microsserviços em Quarkus e Angular, sobre PostgreSQL e AWS.</p>
+        </li>
+        <li class="fact">
+          <p class="fact-period">jul 2022 — mar 2023</p>
+          <h3 class="fact-role">Junior Software Engineer <span class="fact-co">· VMetrix</span></h3>
+          <p class="fact-what">Módulos financeiros de um SaaS usado por grandes bancos da América
+          Latina, com Spring Boot, APIs REST e Oracle.</p>
+        </li>
+        <li class="fact">
+          <p class="fact-period">abr 2022 — jul 2022</p>
+          <h3 class="fact-role">Software Analyst <span class="fact-co">· Profectum</span></h3>
+          <p class="fact-what">Levantamento de requisitos e integração com Salesforce em projeto do
+          setor de saúde, com Java, Spring Boot e Oracle.</p>
+        </li>
+        <li class="fact">
+          <p class="fact-period">out 2020 — abr 2022</p>
+          <h3 class="fact-role">Software Programmer <span class="fact-co">· Mobit Brasil</span></h3>
+          <p class="fact-what">Manutenção e evolução de produto em Java EE e sistemas embarcados,
+          passando por Spring, Angular, TypeScript e Kafka.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section" id="stack" aria-labelledby="stack-h">
+    <div class="wrap">
+      <h2 id="stack-h">Stack por domínio.</h2>
+      <dl class="matrix">
+        <div class="matrix-row">
+          <dt>Backend e APIs</dt>
+          <dd><span>Java 21</span><span>Spring Boot</span><span>Quarkus</span><span>Node.js</span><span>REST</span><span>OpenAPI</span></dd>
+        </div>
+        <div class="matrix-row">
+          <dt>Mensageria e distribuídos</dt>
+          <dd><span>SQS</span><span>Kafka</span><span>Arquitetura orientada a eventos</span><span>Transactional outbox</span></dd>
+        </div>
+        <div class="matrix-row">
+          <dt>AWS</dt>
+          <dd><span>Lambda</span><span>SQS</span><span>S3</span><span>SES</span></dd>
+        </div>
+        <div class="matrix-row">
+          <dt>Dados</dt>
+          <dd><span>PostgreSQL</span><span>Oracle</span><span>Flyway</span><span>Prisma</span></dd>
+        </div>
+        <div class="matrix-row">
+          <dt>Frontend</dt>
+          <dd><span>React</span><span>Angular</span><span>TypeScript</span><span>Vite</span></dd>
+        </div>
+        <div class="matrix-row">
+          <dt>Qualidade</dt>
+          <dd><span>JUnit</span><span>Testcontainers</span><span>Vitest</span><span>GitHub Actions</span></dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="section" id="formacao" aria-labelledby="formacao-h">
+    <div class="wrap">
+      <h2 id="formacao-h">Formação e certificações.</h2>
+      <div class="edu">
+        <div>
+          <h3>Formação</h3>
+          <ul>
+            <li><span class="sans">Pós-graduação em Engenharia de Software</span><br />Uniamérica · <span class="year">2024 — 2025</span></li>
+            <li><span class="sans">Tecnólogo em Análise e Desenvolvimento de Sistemas</span><br />Uniamérica · <span class="year">2022 — 2024</span></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Certificações</h3>
+          <ul>
+            <li>Microservices Java with Spring Boot and Spring Cloud</li>
+            <li>Angular 9 with Spring Boot</li>
+            <li>Angular 9 — Essencial</li>
+            <li>Flutter: introdução ao desenvolvimento de aplicativos móveis</li>
+            <li>Introdução ao aprendizado de máquina</li>
+          </ul>
         </div>
       </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-wrap">
-      <p>© <span id="current-year"></span> Iago Silva. Todos os direitos reservados.</p>
-      <a href="#topo">Voltar ao topo</a>
     </div>
-  </footer>
+  </section>
 
-  <script src="script.js"></script>
+  <section class="section" id="contato" aria-labelledby="contato-h">
+    <div class="wrap">
+      <div class="contact">
+        <div>
+          <h2 id="contato-h">Aberto a posições de backend sênior.</h2>
+          <p>Se você está montando time de plataforma, integrações ou mensageria e precisa de alguém
+          que coloque o trade-off na mesa antes de escolher a tecnologia, me chama.</p>
+        </div>
+        <ul class="contact-list">
+          <li><a href="mailto:iaagofelipe@gmail.com"><span class="label">E-mail</span><span class="value">iaagofelipe@gmail.com</span></a></li>
+          <li><a href="https://www.linkedin.com/in/iaagosilva" rel="noopener"><span class="label">LinkedIn</span><span class="value">/in/iaagosilva</span></a></li>
+          <li><a href="https://github.com/iaagofelipe" rel="noopener"><span class="label">GitHub</span><span class="value">/iaagofelipe</span></a></li>
+          <li><a href="curriculo.pdf" type="application/pdf"><span class="label">Currículo</span><span class="value">PDF · uma página</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="titleblock">
+      <div class="tb-grid">
+        <div class="tb-cell"><span>Responsável</span><strong>Iago Silva</strong></div>
+        <div class="tb-cell"><span>Atuação</span><strong>Backend · AWS</strong></div>
+        <div class="tb-cell"><span>Base</span><strong>Fortaleza, BR</strong></div>
+        <div class="tb-cell"><span>Stack</span><strong>Java · React</strong></div>
+        <div class="tb-cell"><span>Rev</span><strong>2026.11</strong></div>
+      </div>
+    </div>
+    <p class="colophon">
+      <span>© 2026 Iago Silva · HTML e CSS escritos à mão, sem framework.</span>
+      <a href="https://github.com/iaagofelipe/my-portfolio" rel="noopener">Código desta página</a>
+    </p>
+  </div>
+</footer>
+
+<script src="assets/js/site.js" defer></script>
 </body>
 </html>

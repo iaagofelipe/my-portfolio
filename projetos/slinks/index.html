@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>Slinks — case study · Iago Silva</title>
+<meta name="description" content="Como o Slinks foi desenhado: redirect que não depende do analytics, contrato OpenAPI antes da tela, privacidade no desenho e 209 testes em três camadas." />
+<link rel="canonical" href="https://iaagofelipe.github.io/my-portfolio/projetos/slinks/" />
+<meta name="theme-color" content="#0a0a0b" />
+
+<meta property="og:type" content="article" />
+<meta property="og:locale" content="pt_BR" />
+<meta property="og:site_name" content="Iago Silva" />
+<meta property="og:url" content="https://iaagofelipe.github.io/my-portfolio/projetos/slinks/" />
+<meta property="og:title" content="Slinks — case study" />
+<meta property="og:description" content="Redirect que não depende do analytics, contrato antes da tela, privacidade no desenho e 209 testes em três camadas." />
+<meta property="og:image" content="https://iaagofelipe.github.io/my-portfolio/og-image.png" />
+
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="../../assets/css/site.css" />
+</head>
+<body>
+
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="sitehead">
+  <div class="wrap">
+    <a class="brand" href="../../" aria-label="Iago Silva — início">
+      <span class="brand-name">Iago Silva</span>
+      <span class="brand-role">Backend · AWS</span>
+    </a>
+    <nav class="nav" aria-label="Seções">
+      <a href="../../#projetos">Projetos</a>
+      <a href="../../#decisoes">Decisões</a>
+      <a href="../../#trajetoria">Trajetória</a>
+      <a href="../../#contato">Contato</a>
+      <a class="nav-cv" href="../../curriculo.pdf">CV</a>
+    </nav>
+  </div>
+</header>
+
+<main id="conteudo">
+  <div class="wrap">
+
+    <header class="article-head">
+      <h1>Slinks: um encurtador que não maquia o número.</h1>
+      <p class="article-meta">
+        <span><span class="k">papel</span>backend, BFF e front</span>
+        <span><span class="k">stack</span>Java 21 · Spring Boot · Postgres 17 · Fastify · React 19</span>
+        <span><span class="k">ano</span>2026</span>
+        <span><span class="k">código</span><a href="https://github.com/iaagofelipe/slinks" rel="noopener">iaagofelipe/slinks</a></span>
+      </p>
+    </header>
+
+    <article class="prose">
+
+      <h2>O problema</h2>
+      <p>Quem compartilha link em Instagram, WhatsApp, e-mail ou anúncio precisa de duas coisas
+      que raramente convivem no mesmo produto: uma forma rápida de encurtar e copiar, e números
+      em que possa confiar depois.</p>
+      <p>A parte fácil é encurtar. A parte difícil é responder “esse resultado foi real?” quando o
+      link recebeu tráfego de bots, quando o visitante veio de um app sem referrer, ou quando o
+      fuso do workspace não é o fuso do navegador. A maioria dos encurtadores resolve isso do
+      jeito mais confortável: soma tudo e mostra um número maior.</p>
+
+      <h2>O que o produto faz</h2>
+      <p><strong>Meus links</strong> é a cara de encurtador: colar, encurtar, copiar. Sem dashboard
+      no caminho. <strong>Detalhe do link</strong> é onde a medição aparece: cliques no período,
+      visitantes por dia, série diária, países, origens, dispositivos, horários e a comparação com
+      o período anterior — cada número com a definição da métrica ao lado.</p>
+
+      <figure>
+        <img src="../../assets/img/link-detail.png" alt="Detalhe do link no Slinks: link curto em destaque, 3 cliques no período com delta contra o período anterior, visitantes por dia, cliques por visitante-dia, pico de horário, série diária e quebras por país, origem, dispositivo e horário, com a nota de rodapé explicando cada definição." width="1440" height="1445" loading="lazy" decoding="async" />
+        <figcaption>Detalhe do link · ambiente local, dados de demonstração. A nota no pé da tela é
+        parte do produto, não do rodapé do site.</figcaption>
+      </figure>
+
+      <h2>Restrições que moldaram o desenho</h2>
+      <ul>
+        <li><strong>Fatia vertical, não plataforma.</strong> O escopo era provar o caminho inteiro
+        — encurtar, redirecionar, medir, desativar — antes de acrescentar superfície.</li>
+        <li><strong>Single-tenant e admin-only.</strong> O MVP serve uma instância. Mas
+        <code>links</code> e <code>click_events</code> já carregam <code>workspace_id</code> desde a
+        primeira migration, porque nenhuma consulta de link ou estatística deve atravessar o
+        workspace depois.</li>
+        <li><strong>Nada de IP bruto.</strong> A decisão de privacidade veio antes da primeira
+        tabela, não depois de um incidente.</li>
+      </ul>
+
+      <h2>Cinco decisões, com o trade-off de cada uma</h2>
+
+      <h3>1. O redirect não depende do analytics</h3>
+      <p>O <code>GET /:slug</code> responde <code>302</code> com <code>Cache-Control: no-store</code>
+      — nunca <code>301</code>, porque o destino pode mudar e o navegador não pode guardar a
+      decisão. A gravação do clique é best-effort: se falhar, o visitante ainda é redirecionado e a
+      perda é registrada. Link inexistente ou desativado responde <code>404</code>; falha de banco
+      responde <code>503</code>.</p>
+      <p class="caveat"><strong>Trade-off:</strong> aceito perder evento para nunca perder o
+      redirect. Um encurtador que falha em servir o link está quebrado; um que perde uma linha de
+      telemetria está degradado — e o produto diz quando isso acontece.</p>
+
+      <h3>2. Contrato antes da tela</h3>
+      <p>O OpenAPI é gerado no build da API, versionado no repositório e convertido em cliente
+      <code>fetch</code> tipado mais schemas Zod pelo Orval. A SPA não declara tipo nenhum: ela
+      consome o mesmo contrato que o BFF valida em runtime. A CI roda <code>git diff
+      --exit-code</code> no <code>api/openapi.json</code> e no diretório gerado do BFF — se o
+      código gerado divergir do contrato, o build quebra.</p>
+      <p class="caveat"><strong>Trade-off:</strong> mais uma etapa de geração e um artefato a
+      manter versionado. Em troca, mudança de contrato vira erro de build em vez de erro de
+      produção.</p>
+
+      <h3>3. Visitantes são únicos por dia, não do período</h3>
+      <p>A soma dos dias é o que aparece. O produto não afirma saber quantas pessoas diferentes
+      passaram pelo link no mês, porque para isso precisaria reter um identificador estável do
+      visitante por 30 dias. Bots aparecem no painel e são excluídos por padrão, com a participação
+      deles no período. Geolocalização é estimativa por IP, com crédito à base DB-IP. O “hoje” é o
+      fuso do workspace, não o do navegador.</p>
+      <p class="caveat"><strong>Trade-off:</strong> números menores do que a concorrência costuma
+      mostrar, e a obrigação de explicar cada métrica na tela.</p>
+
+      <h3>4. Privacidade no desenho, não no rodapé</h3>
+      <p>Não há IP nem User-Agent bruto persistido. O visitante é identificado por um HMAC com salt
+      diário, e o salt é descartado depois de cinco dias — o que devolve a possibilidade de contar
+      único por dia sem guardar quem é quem. A geolocalização é derivada no momento do clique. Os
+      logs não carregam IP.</p>
+
+      <h3>5. Segurança proporcional ao escopo</h3>
+      <p>Token de serviço entre BFF e API, comparado em tempo constante. Sessão
+      <code>HttpOnly</code> e <code>SameSite=Lax</code> de 12 horas, CSRF double-submit, validação
+      de <code>Origin</code> exata, cookies <code>Secure</code> em produção e rate limit no BFF. O
+      navegador nunca fala com a API Java diretamente.</p>
+
+      <h2>Como isso é testado</h2>
+      <p>São <strong>209 testes</strong> distribuídos onde cada camada tem risco próprio:</p>
+      <table>
+        <thead>
+          <tr><th>Camada</th><th>Testes</th><th>O que cobre</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>API</td>
+            <td>133 (175 casos)</td>
+            <td>Testcontainers com Postgres real: redirect, bot, geo, salt, fuso, período sem clique, desativação, falha de inserção.</td>
+          </tr>
+          <tr>
+            <td>BFF</td>
+            <td>46</td>
+            <td>Sessão, CSRF, <code>Origin</code>, rate limit, proxy, timeout e o contrato gerado.</td>
+          </tr>
+          <tr>
+            <td>SPA</td>
+            <td>30</td>
+            <td>Criação, cópia, timeout recuperável, detalhe, estatística e desativação.</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>A API não usa banco falso: sobe Postgres de verdade em Testcontainers, porque as consultas
+      de estatística são justamente a parte em que um mock mente. Os números de métrica têm casos
+      específicos para fuso, bots, período sem cliques, dias observados e empates.</p>
+
+      <h2>O que ficou de fora — de propósito</h2>
+      <ul>
+        <li>Deploy público com Caddy, TLS e o compose da stack completa.</li>
+        <li>A linha do período anterior sobreposta ao gráfico; hoje o delta aparece só no resumo.</li>
+        <li>Papéis de analista e múltiplos usuários com autenticação própria.</li>
+        <li>Testes E2E em navegador e medição de performance sob carga.</li>
+        <li>Automação de download e proveniência da base DB-IP.</li>
+      </ul>
+
+      <h2>O que eu faria diferente</h2>
+      <p>O BFF existe para o que o navegador precisa e a API não deve carregar. Na prática, ele
+      acabou virando também o lugar de sessão e CSRF, o que é correto — mas custou uma camada a
+      mais de teste e um contrato gerado a manter. Se o produto fosse só internamente consumido, eu
+      teria começado sem BFF e movido essas responsabilidades para dentro da API.</p>
+      <p>A segunda coisa é o gráfico: hoje o delta do período anterior vive no resumo porque a
+      sobreposição de série exigia mais tempo de eixo do que o escopo permitia. É o próximo
+      incremento natural, não um esquecimento.</p>
+
+      <h2>Stack</h2>
+      <table>
+        <tbody>
+          <tr><td>API</td><td>Java 21, Spring Boot, JdbcClient, Flyway, Postgres 17, GeoIP2, springdoc</td></tr>
+          <tr><td>BFF</td><td>Node, Fastify 5, TypeScript, Pino, sessão + CSRF, Orval + Zod</td></tr>
+          <tr><td>SPA</td><td>React 19, Vite, React Router, TanStack Query</td></tr>
+          <tr><td>Qualidade</td><td>JUnit + Testcontainers, Vitest + Testing Library, GitHub Actions</td></tr>
+          <tr><td>Operação</td><td>Docker Compose para o Postgres; Caddy e TLS no plano de deploy</td></tr>
+        </tbody>
+      </table>
+
+      <a class="back" href="../../#projetos">← voltar para os projetos</a>
+    </article>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="colophon">
+      <span>© 2026 Iago Silva · HTML e CSS escritos à mão, sem framework.</span>
+      <a href="https://github.com/iaagofelipe/my-portfolio" rel="noopener">Código desta página</a>
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

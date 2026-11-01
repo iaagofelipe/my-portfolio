@@ -1,0 +1,33 @@
+name: checks
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: HTML, links e artefatos
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Valida o HTML
+        run: npx --yes html-validate@9 "index.html" "curriculo.html" "projetos/**/index.html"
+
+      - name: Verifica links e arquivos referenciados
+        run: node scripts/check-links.mjs
+
+      - name: Confere que os artefatos gerados existem
+        run: |
+          for f in curriculo.pdf og-image.png favicon.svg sitemap.xml robots.txt; do
+            test -s "$f" || { echo "faltando: $f"; exit 1; }
+          done
+          echo "artefatos ok"
